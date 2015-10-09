@@ -1,0 +1,27 @@
+ <html>
+ <head>
+ </head>
+  <body>
+  	<div id="start_balance"></div>
+  	<div id="target_balance"></div>
+  	<div id="interest_rate"></div>
+  	<div id="output"></div>
+    <script>
+       var start_balance = parseInt(prompt("How much money do you want to deposit?"));
+       console.log(start_balance);
+       var target_balance = parseInt(prompt("What is the target balance?"));
+       var interest_rate = parseInt(prompt("What is an interest rate?"));
+       var current_balance = start_balance;
+       var n=0;
+       while (current_balance < target_balance) {
+       current_balance += (current_balance * interest_rate/100);
+	    n++;
+       }
+        document.querySelector("#start_balance").textContent = "Start balance: "+ start_balance;
+        document.querySelector("#target_balance").textContent = "Target balance: " + target_balance;
+        document.querySelector("#interest_rate").textContent = "Interest rate: "+ interest_rate;
+        document.querySelector("#output").textContent = "To grow an initial investment of $"+ start_balance+ " to $"+ target_balance +" at "+interest_rate+" % will require "+ n;
+        console.log(n)
+    </script>
+  </body>
+</html>

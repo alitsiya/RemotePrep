@@ -1,0 +1,15 @@
+  <html>
+  <head>
+  </head>
+  <div id="input"></div>
+  <body>
+  	<script>
+      var input = Number(prompt("Enter an integer greater than 0"));
+      while (isNaN(input) || input<0 || input%1 >0) {
+      	input = prompt("Please, type in the integer number")
+      }
+      console.log(input);
+      document.querySelector("#input").textContent = "Your input is "+input+ " and it's an integer number";
+    </script>
+  </body>
+  </html>

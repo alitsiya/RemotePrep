@@ -1,0 +1,66 @@
+<!-- Exercise: Using the provided HTML document
+
+Include the jQuery library in the file
+Write an expression using jQuery that targets all h1 elements and makes their font-color blue
+... that targets the body element and turns its background red
+... that targets the element with the id "everything" and increases its font-size
+... that targets all elements with the class "holder" and adds a black border
+... that targets all li elements within ul elements and bold them
+... that targets p elements coming immediately after an h1 element and makes it green
+... that targets the element with the id of "secret" and changes its display property to 'none'
+... now change #secret's display property back to block
+... that targets the element with the id of "change-me" and changes its text to a new sentence
+... that appends new text to the end of the sentence in #change-me
+... that replaces #change-me's contents with two new paragraph tags with content included
+... that appends a new paragraph to #change-me
+... that targets the all li elements and changes their text to a new sentence
+... that targets the all li elements and appends new text to all of them
+... that targets the element with the id of "everything" and appends an ordered list with three list elements inside -->
+<html>
+
+<head>
+    <title>HTML Document</title>
+</head>
+
+<body>
+    <div id="everything">
+        <h1>A heading!</h1>
+        <p>Here's some text!</p>
+        <p>Here's a second set of text!</p>
+        <div class="holder">
+            <ul>
+                <li>List Item 1</li>
+                <li>List Item 2</li>
+                <li>List Item 3</li>
+            </ul>
+        </div>
+        <div class="holder">
+            <ol>
+                <li>List Item 4</li>
+                <li>List Item 5</li>
+                <li>List Item 6</li>
+            </ol>
+        </div>
+        <div id="change-me">This part needs to change!</div>
+        <div id="secret">We should hide this!</div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script>
+    $('body').css('background', 'red') //that targets the body element and turns its background red
+    $('#everything').css('font-size', '+=5') //that targets the element with the id "everything" and increases its font - size
+    $('.holder').css('border', 'solid 1px black')  //that targets all elements with the class "holder" and adds a black border
+    $('ul').children('li').css('font-weight', 'bold') //that targets all li elements within ul elements and bold them
+    $('h1').next('p').css('color', 'green')  //that targets p elements coming immediately after an h1 element and makes it green
+    $('#secret').hide() //that targets the element with the id of "secret" and changes its display property to 'none'
+    $('#secret').show()  //now change #secret's display property back to block
+    $('#change-me').text("New sentence") //that targets the element with the id of "change-me" and changes its text to a new sentence
+    $('#change-me').append("and a little bit more text")  //that appends new text to the end of the sentence in #change-me
+    $('#change-me').html('<p>New text 1</p><p>New text 2</p>')  //hat replaces #change-me's contents with two new paragraph tags with content included
+    $('#change-me').append('<p>This is appended new paragraph</p>') //that appends a new paragraph to #change-me
+    $('li').text("This is a changed text")  //that targets the all li elements and changes their text to a new sentence
+    $('li').append(" and appended too") //that targets the all li elements and appends new text to all of them
+    $('#everything').append('<ol><li>One</li><li>Two</li><li>Three</li></ol>')  //that targets the element with the id of "everything" and appends an ordered list with three list elements inside
+    </script>
+</body>
+
+</html>

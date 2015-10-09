@@ -1,0 +1,34 @@
+<!-- //we're on rp7 class day 2. Join or skip
+//if skip "Good by!" the game will end
+//Join What next: "What do we want ot learn: booleans, if statements or chat with group"
+//if booleans ask evaluate expression (false || "this one happens") "Success!!!"
+//if statement "You are on a right track"
+//chat with group ->> 'What about learning?'
+
+var response = user_input ? "Response Received" : "Empty string, please type in a value"
+
+document.querySelector('#message').textContent = (name === 'Bob') ?
+  "Damnit Bob, I've told you " + (++number_of_rejections) + " times..."
+  : "Oh hello, " + name + ". Welcome!" -->
+
+  <html>
+  <head>
+  </head>
+  <body>
+  	<div>It's a day 2 of Remote Prep Class. Join or Skip?</div>
+  	<div id="join"></div>
+
+  	<script>
+      var a = prompt("It's a day 2 of Remote Prep Class. Join or Skip?")
+      if (a == "Join") {
+         console.log("Great to see you!")
+      }
+      else if (a == "Skip") {
+      	console.log("Why did you sign up then?")
+      }
+      else {
+      	console.log("I'm not sure what that means")
+      }
+    </script>
+  </body>
+</html>

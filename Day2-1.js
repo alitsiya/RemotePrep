@@ -1,0 +1,5 @@
+console.log("Hello" === "Hello")
+console.log("Hello" === "hello")
+console.log("Hello world" === "Hello  world")
+console.log("5" === 5)
+console.log("5" == 5)

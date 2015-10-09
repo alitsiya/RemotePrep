@@ -1,0 +1,16 @@
+<html>
+  <head>
+  </head>
+  <body>
+ <div id="greeting">
+ </div>
+<span id="hometown"></span>
+ <script>visitor_name = prompt("What is your name?")
+ welcome_message="Welcome, "+ visitor_name
+ document.querySelector('#greeting').textContent = welcome_message
+
+ town = prompt("What is your home town?");
+ document.querySelector('#hometown').textContent = "Nice to have a visitor from " + town;
+ </script>
+  </body>
+</html>

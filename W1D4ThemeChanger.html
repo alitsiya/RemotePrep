@@ -1,0 +1,63 @@
+<!-- Exercise: Theme Changer
+
+Create a web page that asks the user what color theme they'd like to view the web page in.
+Keep asking until they enter a valid input (hint: You can end the while loop manually using the break keyword)
+Use jQuery to change the css of various elements on the page to use at least three shades of that color. e.g. If they choose "green", show a light green background, with green text and dark green borders
+Use jQuery to display a message letting the user know what theme has been applied to the page
+Have at least three color schemes for a visitor to choose from (maybe green, blue and red)
+Place different images on the page depending on the theme
+Extra Credit: Allow the user to enter in a hex value and programmatically create lighter and darker tones of that color. -->
+<html>
+<head>
+</head>
+<body>
+<div id="everything">
+      <h1>A heading!</h1>
+      <img src=''>
+      <p>Here's some text!</p>
+      <p>Here's a second set of text!</p>
+      <div class="holder">
+          <ul>
+              <li>List Item 1</li>
+              <li>List Item 2</li>
+              <li>List Item 3</li>
+          </ul>
+      </div>
+      <div class="holder">
+          <ol>
+              <li>List Item 4</li>
+              <li>List Item 5</li>
+              <li>List Item 6</li>
+          </ol>
+      </div>
+      <div id="change-me">This part needs to change!</div>
+      <div id="secret">We should hide this!</div>
+</div>
+	<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script>
+    var input = prompt("What color theme you would like to use? (salmon, green or blue)", "salmon, green or blue");
+
+    while (input !== "salmon" && input !== "green" && input !== "blue"){
+    	if (input === '' || input === null) {
+    		break;
+    	}
+    	input = prompt("Try again! What color theme you would like to use? (salmon, green or blue)", "rsalmon, green or blue");
+    }
+    console.log(input);
+    $('body').css('background-color', "light" + input)
+    $('h1').css('color', input)
+    $(".holder").css('background-color', "dark" + input)
+    $('#everything').css('border', '5px solid dark' + input);
+    $('#change-me').append('The '+input+ ' theme has been applied!');
+    if (input === 'salmon') {
+    	$('img').attr('src','https://betterbeingunderground.files.wordpress.com/2013/10/lpc_260ml_brown_bear.gif')
+    }
+    else if (input === 'green') {
+      $('img').attr('src','http://stream1.gifsoup.com/view6/2831976/green-laser-show-o.gif')
+    }
+    else {
+      $('img').attr('src','http://media.giphy.com/media/113MDJJoGcec12/giphy.gif')
+    }
+    </script>
+</body>
+</html>

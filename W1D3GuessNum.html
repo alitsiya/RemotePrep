@@ -1,0 +1,43 @@
+<!-- /* Exercise: Guess a Number
+
+Prompt the user for an input to determine what the highest integer n should be. 
+use parseInt(n) to convert it from a string to a number. As long as the result is NaN, ask them again.
+Generate a random number between 1 and n.
+Ask the user to guess the number. Tell them if their guess is too high or too low.
+Loop until they guess correctly
+Use .innerHTML to show them something fun as a reward for guessing correctly.
+Show them what number was the correct number in the end.
+Use a counter to let them know how many guesses it took them to get the right number. */ -->
+<html>
+
+<head>
+</head>
+<div id="output"></div>
+
+<body>
+    <script>
+    var input = Number(prompt("Type an integer number between 0 and 100"));
+    while (isNaN(input)) {
+        input = Number(prompt("It's not an integer. Type an integer number between 0 and 100"));
+    }
+    var target = Math.floor(Math.random() * 100); //generate target
+    console.log("Number is " + target);
+
+    var attempt = 1;
+
+    while (input !== target) {
+        if (input < target) {
+            input = Number(prompt("That is not correct. The number is bigger than " + input + ". Try again"))
+        } else {
+            input = Number(prompt("That is not correct. The number is lower than " + input + ". Try again"))
+        }
+        attempt++
+    }
+    if (input === target) {
+        alert("You guessed correctly! It's " + target + ". Number of attempts is " + attempt)
+    }
+    document.querySelector("#output").innerHTML = "You guessed correctly! It's " + target + ". Number of attempts is " + attempt
+    </script>
+</body>
+
+</html>

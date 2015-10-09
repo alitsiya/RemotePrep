@@ -1,0 +1,35 @@
+
+ <html>
+ <head>
+ 	<style type="text/css">
+        .odd {
+        	color: red;
+        }
+        .even {
+        	color: green;
+        }
+ 	</style>
+ </head>
+  <body>
+  	<div id="target"></div>
+  	<script>
+        var n = 9;
+        var i =1;
+        var str = "";
+        while (i <= n ) {
+        	if (i%2 === 0) {
+        		str += '<p class="even">';
+        	}
+        	else {
+        		str += '<p class="odd">';
+        	}
+        	str += i +'</p>'
+	        if (i < n) {
+	        	str += "<hr>";
+	        }
+	        i++;
+        }
+        document.querySelector("#target").innerHTML = str;
+    </script>
+  </body>
+</html>

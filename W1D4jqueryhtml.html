@@ -1,0 +1,101 @@
+<!-- Exercise: Construct an HTML document entirely using jQuery...
+
+Start with an empty HTML document with jQuery included.
+Place a second <script> tag on the page to contain your JavaScript
+Use jQuery to create a new <div> tag with an id of container and append it to the body
+Use jQuery to create a new <img> tag and place it inside #container
+Give the img a src attribute with the URL of a funny picture
+Use jQuery to change the image to be really small
+Now make it really big
+Now add a few more images and some text captions and use various jQuery effects to make them dance around!
+Use Math.random() and position:fixed to randomize the placement of the various HTML elements on your page. Every time you hit refresh, your page should rearrange itself. window.innerHeight and window.innerWidth might come in handy. -->
+<html>
+
+<head>
+    <title>HTML Document</title>
+</head>
+
+<body>
+Exercise: Using the provided HTML document<br>
+<br>
+Include the jQuery library in the file<br>
+Write an expression using jQuery that targets all h1 elements and makes their font-color blue<br>
+... that targets the body element and turns its background red<br>
+... that targets the element with the id "everything" and increases its font-size<br>
+... that targets all elements with the class "holder" and adds a black border<br>
+... that targets all li elements within ul elements and bold them<br>
+... that targets p elements coming immediately after an h1 element and makes it green<br>
+... that targets the element with the id of "secret" and changes its display property to 'none'<br>
+... now change #secret's display property back to block<br>
+... that targets the element with the id of "change-me" and changes its text to a new sentence<br>
+... that appends new text to the end of the sentence in #change-me<br>
+... that replaces #change-me's contents with two new paragraph tags with content included<br>
+... that appends a new paragraph to #change-me<br>
+... that targets the all li elements and changes their text to a new sentence<br>
+... that targets the all li elements and appends new text to all of them<br>
+... that targets the element with the id of "everything" and appends an ordered list with three list elements inside<br>
+Exercise: Using the provided HTML document<br>
+<br>
+Include the jQuery library in the file<br>
+Write an expression using jQuery that targets all h1 elements and makes their font-color blue<br>
+... that targets the body element and turns its background red<br>
+... that targets the element with the id "everything" and increases its font-size<br>
+... that targets all elements with the class "holder" and adds a black border<br>
+... that targets all li elements within ul elements and bold them<br>
+... that targets p elements coming immediately after an h1 element and makes it green<br>
+... that targets the element with the id of "secret" and changes its display property to 'none'<br>
+... now change #secret's display property back to block<br>
+... that targets the element with the id of "change-me" and changes its text to a new sentence<br>
+... that appends new text to the end of the sentence in #change-me<br>
+... that replaces #change-me's contents with two new paragraph tags with content included<br>
+... that appends a new paragraph to #change-me<br>
+... that targets the all li elements and changes their text to a new sentence<br>
+... that targets the all li elements and appends new text to all of them<br>
+... that targets the element with the id of "everything" and appends an ordered list with three list elements inside<br>
+Exercise: Using the provided HTML document<br>
+<br>
+Include the jQuery library in the file<br>
+Write an expression using jQuery that targets all h1 elements and makes their font-color blue<br>
+... that targets the body element and turns its background red<br>
+... that targets the element with the id "everything" and increases its font-size<br>
+... that targets all elements with the class "holder" and adds a black border<br>
+... that targets all li elements within ul elements and bold them<br>
+... that targets p elements coming immediately after an h1 element and makes it green<br>
+... that targets the element with the id of "secret" and changes its display property to 'none'<br>
+... now change #secret's display property back to block<br>
+... that targets the element with the id of "change-me" and changes its text to a new sentence<br>
+... that appends new text to the end of the sentence in #change-me<br>
+... that replaces #change-me's contents with two new paragraph tags with content included<br>
+... that appends a new paragraph to #change-me<br>
+... that targets the all li elements and changes their text to a new sentence<br>
+... that targets the all li elements and appends new text to all of them<br>
+... that targets the element with the id of "everything" and appends an ordered list with three list elements inside<br>
+
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script>
+    $('body').append('<div id="new">Some text</div>')
+    var new_div = $('<div id="container">Some text here!</div>')
+    $('body').append(new_div)
+    //$('#container').css('text-align', 'center')
+    $('body').append('<div id="anothercontainer">Some text here!</div>')
+    $('#container').append('<img src="http://media.giphy.com/media/fAT2Db0j0Mblu/giphy-facebook_s.jpg">')
+    $("#anothercontainer").append('<img src="http://media.giphy.com/media/jbcjNsyVeWrK/giphy.gif">')
+    //$('img').css('width', '20%')
+    //$('#container').fadeOut(5000) 
+    //$('#anothercontainer').hide().slideDown("slow", function() {
+    // Animation complete.
+    //});
+    var x = Math.floor(Math.random()*window.innerHeight);
+    var y = Math.floor(Math.random()*window.innerWidth);
+    console.log(x);
+    console.log(y);
+    $('#new').css('color', 'red')
+    $('#new').css({'position': 'fixed', 'left': x, 'top': y});
+
+    //$('#anothercontainer').next('img').css({'position': 'fixed')
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!-- /* Exercise: Write code to play rock, paper, scissors with the user.
+
+Ask for input until the user enters either "R", "P", or "S"
+Use Math.random() to choose a play for the computer
+Tell the user what the outcome was
+Ask the user if they'd like to play again */ -->
+<html>
+<head>
+</head>
+<div id="input"></div>
+<body>
+    <script>
+    letsplay();
+function letsplay() {
+	var target = Math.floor(Math.random()*3); //generate target
+    if (target === 0) {
+    	target1 = "R";
+    }
+    else if (target === 1) {
+    	target1 = "P";
+    }
+    else {target1="S"}
+    console.log("Target is "+target1);
+
+    var input = prompt("Let's play! Type 'R' for Rock, 'P' for Paper or 'S' for Scissors")
+
+    while (input!=="R" && input!=="P" && input!=="S") {
+    	input = prompt("Try again. Type 'R' for Rock, 'P' for Paper or 'S' for Scissors")
+    }
+    //convert letters to words
+    	if (target1 === "S") {
+    		var p = "Scissors"
+    	}
+    	else if (target1 === "P") {
+    		var p = "Paper"
+    	}
+    	else {var p = "Rock"}
+    	if (input === "S") {
+    		var t = "Scissors"
+    	}
+    	else if (input === "P") {
+    		var t = "Paper"
+    	}
+    	else {var t = "Rock"}
+    //
+    if (input === target1) {
+    	var again = prompt("You have "+t+". And computer has " + p + ". No winner today! Whant to play again?(Y/N)");
+    }
+    else if ((target1 === "S" && input==="P") || (target1 === "P" && input==="R") || (target1 === "R" && input==="S")){
+    	var again = prompt("You have "+t+". And computer has " + p + ". Computer is a winner! Whant to play again?(Y/N)");
+    }
+    else {
+    	var again = prompt("You have "+t+". And computer has " + p + ". You won! Whant to play again?(Y/N)");
+    }
+    if (again === "Y") {
+    	letsplay();
+    }
+    else {
+    	alert("Good bye!")
+    }
+
+    
+}
+
+    </script>
+</body>
+</html>
