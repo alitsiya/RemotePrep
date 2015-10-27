@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="SF" type="button">SF weather</button>
+    <button id="LA" type="button">LA weather</button>
+    <div id="container">
+    	<div id="current"></div>
+        <div id="hi"></div>
+        <div id="low"></div>
+        <div id="descr"></div>
+        <div id="wind"></div>
+        <div id="sun"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script>
+
+    var to_be_run_on_server_response = function(weather_data) {
+        $('#current').append("Current weather is " + weather_data.main.temp + ' F');
+        //today's high and low temperatures
+        $('#hi').append("Minimum is " + weather_data.main.temp_min + ' F');
+        $('#low').append("Maximum is " + weather_data.main.temp_max + ' F');
+        //the description of current weather conditions
+        $('#descr').append("Description of current weather: " + weather_data.weather[0].description);
+        //current wind speed
+        $('#wind').append("Current wind speed: " + weather_data.wind.speed + " Miles per hour");
+        //The time of sunrise and sunset. (hint: new Date(weatherData.sys.sunrise * 1000) )
+        $('#sun').append("Sunrise today: " + new Date(weather_data.sys.sunrise * 1000));
+        $('#sun').append(" Sunset today: " + new Date(weather_data.sys.sunset * 1000));
+    }
+
+var runweather = function(element) {
+	console.log(element.target.id);
+
+
+    	$('#current').text('');
+    	    	$('#hi').text('');
+    	$('#low').text('');
+    	$('#descr').text('');
+    	$('#wind').text('');
+    	$('#sun').text('');
+    	if (element.target.id === "SF") {
+    		        $.get('http://api.openweathermap.org/data/2.5/weather?q=San%20Francisco&mode=json&units=imperial&APPID=93b03ba103c6cabec96f47a6f650769e').success(to_be_run_on_server_response);
+    	}
+    	else {
+    		  $.get('http://api.openweathermap.org/data/2.5/weather?q=Los%20Angeles&mode=json&units=imperial&APPID=93b03ba103c6cabec96f47a6f650769e').success(to_be_run_on_server_response);
+    	}
+
+}
+
+document.addEventListener('click', runweather);
+    //document.querySelector('#SF').addEventListener('click', runSFweather);
+    //document.querySelector('#LA').addEventListener('click', runLAweather);
+
+    /* Allow the user to click a button or link to show the weather in a different city without reloading the page. You will need to do the following:
+
+    Create one or more links across the top of the page with names of alternate cities.
+    Set up click handlers on the links that event.preventDefault() to prevent the browser from changing pages.
+    Clear the current contents of #container.
+    Tell the user that data is currently being fetched.
+    When data returns from the weather server, display it on the page */
+    </script>
+</body>
+
+</html>

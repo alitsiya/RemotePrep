@@ -1,0 +1,24 @@
+<!-- Exercise Write a function answer_logger that takes a function as input, runs it, and places the return value from that function invocation into a div#answer
+
+We can test answer_logger using the following code, we should not need to change it at all. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="answer"></div>
+	<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+	<script>
+var answer_logger = function(fn){
+	var output = fn();
+	$('#answer').text(output);
+}
+
+answer_logger(function(){
+  return "I should appear in div#answer!"
+})
+	</script>
+</body>
+</html>

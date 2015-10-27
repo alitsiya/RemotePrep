@@ -1,0 +1,79 @@
+<!-- 
+Exercise: Magic 8-ball
+
+Create a Magic 8-ball that allows a user to type a question into an input field.
+When the user clicks the "ask question" button, register a click handler function that randomly selects a reply from an array of appropriately vague stock phrases.
+Display the answer inside a glowing circle or something crazy like that.
+Allow the user to click an "ask again" button which clears their previous question and output.
+Refactor your code so that the user doesn't receive the same reply twice until all the replies have been used at least once. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Magic Ball</title>
+    <style>
+    .hideme {
+        display: none;
+        visibility: hidden;
+    }
+    
+    .showme {
+        display: inline;
+        visibility: visible;
+    }
+    
+    .magicball {
+        background-image: url('http://www.clker.com/cliparts/7/c/d/7/11970930982032583871BenBois_Magic_ball.svg.med.png');
+        display: table;
+        width: 300px;
+        height: 300px;
+        text-align: center;
+    }
+    
+    span {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    </style>
+</head>
+
+<body>
+    <label for="input">Type your question</label>
+    <input id="question" type="text">
+    <button type="button" id="submit">Ask a question</button>
+    <button type="button" id="button2" class="hideme">Try again</button>
+    <div class="magicball" id="output"><span></span></div>
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script>
+    document.querySelector('#submit').addEventListener('click', fn);
+    document.querySelector('#button2').addEventListener('click', clear);
+
+    var answered = [];
+
+    function fn() {
+        var arr = [42, "Try harder", "It's raining today", "All you need is love", "Try to do that on your own"];
+
+        var rand = Math.floor(Math.random() * arr.length);
+        while (answered.indexOf(arr[rand]) > -1) {
+            fn();
+        }
+
+        $('span').text(arr[rand]);
+        $('#button2').attr("class", "showme");
+        answered.push(arr[rand]);
+        console.log(answered);
+
+
+    }
+
+    function clear() {
+        $('span').text('');
+        $('#button2').attr("class", "hideme");
+        $('input').val('');
+        answered = [];
+    }
+    </script>
+</body>
+
+</html>

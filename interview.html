@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+    <script>
+    var primeList = function(num) {
+var arr = _.range(3, 21);
+var primefilter = _.filter(arr, function(val){
+    for (var i=2; i < val; i++) {
+        if (val%i === 0) {
+            return false;
+        }
+    }
+    return true;
+});
+return primefilter;
+}
+console.log(primeList(20));
+    </script>
+</body>
+
+</html>

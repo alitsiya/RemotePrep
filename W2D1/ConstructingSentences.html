@@ -1,0 +1,41 @@
+<!-- Exercise: Constructing sentences
+
+Write a function called string_printer, that takes a string as an argument and uses $('#output').text() 
+to place it into a specific <div> on the web page. Call it multiple times with different strings from the console.
+Does string_printer use a side effect or a return value?
+Write a function called funny_sentence that takes a noun, an adjective, a verb, and an adverb as 
+inputs, and constructs a string of html text and uses $('#output').append() to place it on the page.
+Put each word argument you pass in into spans that have css rules that styles them differently to make them stand out.
+Invoke funny_sentence 5 times from within a <script> tag and see the result on the page.
+Extra Credit: Create a version of funny_sentence that takes no inputs, but rather constructs a funny 
+sentence on its own from randomly chosen words -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="output"></div>
+
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script>
+    var string_printer = function(str) {
+    	return $('#output').text(str)
+    }
+
+    var funny_sentence = function(noun, adjective, verb, adverb) {
+    	$('#output').append(noun+' ');
+    	$('#output').append(verb+' ');
+    	$('#output').append(adjective+ ' ');
+    	$('#output').append(adverb);
+    }
+    funny_sentence("Pet", "bad", "smells", "sdfsf")
+    funny_sentence("Me", "bad", "lift", "tomorrow")
+    funny_sentence("He", "good", "feels", "sdsdfsffsf")
+    </script>
+</body>
+
+</html>

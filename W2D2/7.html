@@ -1,0 +1,47 @@
+<!-- Exercise:
+
+Try out the above code in an appropriately set up HTML document
+What's the difference between the event's keyCode property and the actual letter?
+What's the difference between putting the keypress handler on the input and on the body?
+If the keypress handler is placed on the body and we type into the input, does the event handler run? Why is this?
+Create a keylogger that concatenates every letter the user types to a string called "nsa_surveillance"
+Show the user everything they've typed in a div#output
+Create your own version of Type Racer -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+	<input type="text" id="type">
+	<label for="type"></label>
+	<div id="output"></div>
+	<input type="text" id="racer">
+	<div id="typeracer"></div>
+	<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script>
+    $('input#type').on('keypress', function(e) {
+        //$('label').text(e.keyCode)
+        $('#output').append(String.fromCharCode(e.keyCode))
+    })
+
+    //$('body').on('keypress', function(e) {
+    //    String.fromCharCode(e.keyCode)
+    //})
+    var str = "Create your own version of Type Racer"
+    $('#typeracer').text(str);
+    $('input#racer').on('keypress', function(e) {
+    	if (str[0] === String.fromCharCode(e.keyCode)) {
+    		str = str.slice(1, str.length);
+    	}
+    	else {console.log("Ooops")}
+    	$('#typeracer').text(str);
+    })
+
+    </script>
+</body>
+
+</html>

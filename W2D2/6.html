@@ -1,0 +1,27 @@
+<!-- Exercise:
+
+Guess what does the code above does. How would you go about testing your theory?
+Place the above code in a fresh HTML document
+Create the correct HTML elements referenced by the click handler
+When a user types a color into the input and presses the go button, change the background color of the page to that color -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<label for="color">Choose color<input type="text" id="color"></label>	<button id="go">Go!</button>
+	<div id="output"></div>
+	<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+	<script>
+
+$('button#go').on('click', function(){
+  $('#output').text( $('input#color').val() )
+  $('body').css('background-color', $('input#color').val())
+})
+	</script>
+</body>
+</html>

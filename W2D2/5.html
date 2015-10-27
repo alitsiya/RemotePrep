@@ -1,0 +1,44 @@
+<!-- Exercise:
+
+Place the above code in an HTML document with at least one div and test it out.
+Create an HTML document with at least 5 paragraphs
+Give each paragraph a unique id attribute
+Create a div#output at the top of the page
+Create a click handler that shows the id attribute of the last paragraph that was clicked on in the div#output
+Change the color and background-color of a clicked-on div to make it stand out
+When you click on another div, clear the special styling of any perviously clicked-on divs
+Is this easier to do by styling directly with .css() or by adding and removing a class name? Try both ways -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+	<div id="output"></div>
+	<div><h2>Hello!</h2>
+		<p id="one">This is first paragraph</p>
+		<p id="two">This is second paragraph</p>
+		<p id="three">This is third paragraph</p>
+		<p id="four">This is fourth paragraph</p>
+		<p id="five">This is fifth paragraph</p>
+	</div>
+	<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script>
+    var el_finder = function(event) {
+        console.log("calling el_finder for:", this, event.target)
+        console.log($(this).attr('id'));
+        var id = $(this).attr('id');
+        $('#output').text(id);
+        $('p').css('background-color', 'white')
+        $(this).css('background-color', 'yellow');
+    }
+
+    $('p').click(el_finder);
+    
+    </script>
+</body>
+
+</html>

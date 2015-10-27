@@ -1,0 +1,47 @@
+<!--Exercise:
+
+How can we inspect the event object in the console? What properties and methods does it have?
+Do click events and mouseover events get arguments passed into each invocation of their event 
+handler functions as well? Do they have the same properties?
+Create a small position: fixed <img> that follows the cursor around the screen. Maybe a gif of a puppy walking.
+Figure out how to hide the cursor with CSS
+Make the image follow the mouse only if the mouse button is pressed -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+        <style type="text/css">
+    	html, body {
+    		height: 100%;
+    		margin: 0;
+    	}
+
+    	.container {
+    		min-height: 100%; 
+    	}
+    </style>
+</head>
+
+<body>
+	<div class="container" style="cursor: none">
+    <div>Some text to test</div>
+    <div id="img"><img src="http://images.smilesumo.com/2015/04/Cat-Pictures-Funny.jpg" height="336" width="502" alt=""></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script>
+    var mouse_tracker = function(event) {
+        console.log(event.pageX, event.pageY, !!event.which)
+    }
+    $('body').on('mousemove', mouse_tracker)
+    var image_mover = function(event) {
+        var imgright = window.innerWidth - event.pageX - 250;
+        var imgtop = event.pageY;
+        $('img').css({position: 'absolute', top: imgtop, right: imgright})
+    }
+    $('body').on('mousemove', image_mover)
+    </script>
+</body>
+
+</html>

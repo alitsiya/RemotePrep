@@ -1,0 +1,43 @@
+<!-- Exercise:
+
+Place the above code into a script tag in an HTML document
+Make sure there is a #target element on the page and that it has a non-zero height and width
+Define CSS rules for the 'highlighted' class
+Make sure everything is wired up correctly and works as you would expect
+Place an image on the page that disappears when you place your mouse over a particular div#magic. Maybe this one of Margaret Hamilton.
+How many different ways can you think of to accomplish that task? -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .highlighted {
+    	background-color: yellow;
+    }
+    </style>
+</head>
+
+<body>
+	<div id="target">Just text!</div>
+	<div id="magic"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Margaret_Hamilton.gif" alt=""></div>
+	
+	<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script>
+    $('#target').on('mouseover', function() {
+        $('#target').addClass('highlighted')
+    })
+    $('#target').on('mouseleave', function() {
+        $('#target').removeClass('highlighted')
+    })
+    $('#magic').on('mouseover', function() {
+        $('#magic').hide()
+    })
+    $('#magic').on('mouseleave', function() {
+        $('#magic').show()
+    })
+    </script>
+</body>
+
+</html>

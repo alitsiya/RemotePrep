@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <button id="submit" onclick="get_pictures($('input').val())">Submit</button>
+<div id="output"></div>
+
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script>
+    var images = []
+    var get_pictures = function(searchTerm) {
+        $.ajax({
+            url: "https://$63959cddfc265e96a6dd:$b27bd98068b08660a211677d5cb13b9b0cf5dcf9@api.shutterstock.com/v2/images/search?query=" + encodeURI(searchTerm),
+            headers: {
+                "Authorization": "Client-ID 63959cddfc265e96a6dd"
+            },
+            success: function(response) {
+                console.log(response);
+                images = response;
+
+                $('#output').html('<img src="'+images.data[1].link+'" alt="">')
+            }
+        })
+        console.log(searchTerm);
+    }
+    </script>
+</body>
+
+</html>

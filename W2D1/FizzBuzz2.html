@@ -1,0 +1,48 @@
+<!-- Exercise: FizzBuzz 2: FizzBuzz's revenge
+
+Write a function this_that that takes in two strings and reimplements fizzBuzz using those two words 
+instead of 'fizz' and 'buzz' (prints the numbers from 1 to 100. But for multiples of three print word1 
+instead of the number and for the multiples of five print word2. For numbers which are multiples of both 
+three and five print word1word2.)
+In the first iteration, have this_that return a long string of the counting seperated by commas
+Now refactor such that this_that uses $('#output').append() each time to add new divs to the page
+Allow the user to input a count_up_to argument
+Allow the user to input fizz_num and buzz_num arguments to set the word substitutions to multiples 
+of something other than 3 and 5 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="output"></div>
+	<button onclick="this_that('Fizz', 'Buzz')">Let's play</button> 
+	<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+	<script>
+
+	var this_that = function(word1, word2) {
+	var res_list = '';
+	var count_up_to = prompt("Choose integer", "1-100");
+	var fizz_num = prompt("Choose Fizz-number");
+	var buzz_num = prompt("Choose Buzz-number");
+	for (var i=1; i <= count_up_to; i++) {
+		if (i%fizz_num == 0 && i%buzz_num == 0) {
+			res_list += word1+ word2 + (i == count_up_to ? '' : ', ');
+		}
+		else if (i%fizz_num ==0) {
+			res_list += word1 + (i == count_up_to ? '' : ', '); 
+		}
+		else if (i%buzz_num ==0) {
+			res_list += word2 + (i ==  count_up_to ? '' : ', ');
+		}
+		else {
+			res_list += i + (i == count_up_to ? '' : ', ');
+		}
+	}
+	var s = $('#output').append(res_list+'<br>');
+	return s
+}
+</script>
+</body>
+</html>

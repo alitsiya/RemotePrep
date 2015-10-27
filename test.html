@@ -1,11 +1,27 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
 </head>
-<div id="output"></div>
 <body>
+    <div id="output"></div>
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
     <script>
-    	var userInput = prompt('Prompt text','Suggested input');
-if (userInput != '' && userInput != null) {console.log ("Hello!")}
-     </script>
+    var root = 'http://jsonplaceholder.typicode.com';
+             $.ajax({
+                url: root + '/comments',
+                method: 'GET'
+            }).then(function(data) {
+                data.forEach(function(val) {
+                    console.log(val.postId);
+                    if (val.postId ===  1) {
+                        console.log(val);
+                        $('#output').append("Name: " + val.name + ' Email: ' + val.email);
+                    }
+                });
+
+            }); 
+    </script>
 </body>
 </html>

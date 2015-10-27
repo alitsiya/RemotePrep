@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+	<label for="email">Email: </label><input type="email" id="email">
+	<label for="password">Password: </label><input type="password">
+	<button onclick="login()">Log in</button>
+    <div id="post1"></div>
+    <div id="post2"></div>
+    <div id="onetoten"></div>
+    <div id="posts" style="color: green"></div>
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script>
+    var root = 'http://jsonplaceholder.typicode.com';
+    /*
+    //Retrieve the post with id of 1 from the server, in the success callback, display it on the page.
+    $.ajax({
+      url: root + '/posts/1',
+      method: 'GET'
+    }).then(function(data) {
+      $('#post1').text('Title: '+ data.title + ' Description: ' + data.body);
+    });
+
+    //Retrieve the post with id of 2 from the server, in the success callback, display it on the page.
+    $.ajax({
+      url: root + '/posts/2',
+      method: 'GET'
+    }).then(function(data) {
+      $('#post2').text('Title: '+ data.title + ' Description: ' + data.body);
+    });
+    //Abstract the success callback out into a separate function called place_post_on_page.
+    var place_post_on_page = function(num, place) {
+    	$.ajax({
+      url: root + '/posts/' + num,
+      method: 'GET'
+    }).then(function(data) {
+      $(place).append('Title: '+ data.title + '<br> Description: ' + data.body+'<br>');
+    });
+    }
+
+    //Using a for loop, use AJAX calls to fetch posts with ids from 1 to 10 and pass them to your place_post_on_page function to display them on the page. Do they always appear in the same order? Why is this?
+    for (var i=1; i <= 10; i++) {
+    	place_post_on_page(i, '#onetoten');
+    } */
+
+    //Now instead, use the /posts endpoint to get all posts and display only their titles on the page. This is often called the "index" view
+
+    var dataarr = [];
+    $.ajax({
+        url: root + '/posts',
+        method: 'GET'
+    }).then(function(data) {
+        var num = 0;
+        console.log(data);
+        data.forEach(function(value) {
+            $('#posts').append('<div id="' + num + '"></div>');
+            $('#' + num).text('Title: ' + value.title);
+            dataarr.push(value); //    Network requests are expensive and slow. Refactor your code such that once you've fetched data once, it's cached as a javascript object and accessible immediately when the user moves back and forth between 'show' and 'index' views.
+            num++;
+        });
+    });
+    //When a visitor clicks on the title of a post, clear the content area and replace it with the full information for that post, displaying all of its properties. This is often called the "show" view. 
+    var click = [];
+    for (var i = 0; i < dataarr.length; i++) {
+        click[i].push(false);
+    }
+
+//  9-10  When showing an individual post, fetch all '/comments' and append the ones whose 'postId' property matches the post's id.
+//    Fetch information about the user who made the post. Display their name and email under the post.
+    var addcomments = function(index) {
+        $.ajax({
+            url: root + '/comments',
+            method: 'GET'
+        }).then(function(data) {
+            data.forEach(function(val) {
+            	console.log(val.postId);
+                if (val.postId === index) {
+                	var ind = index - 1;
+                	console.log(ind);
+                    $('#' + ind).append("<br> Name: " + val.name + ' Email: ' + val.email);
+                }
+            });
+
+        });
+    }
+// 6 Allow the user to navigate back to the "index" view from the "show" view.
+    document.addEventListener('click', function(event) {
+    	var indexofpost = Number(event.target.id);
+        if (click[indexofpost] === false) {
+            console.log(indexofpost);
+            $('#' + indexofpost).text('');
+            $('#' + indexofpost).text('Title: ' + dataarr[indexofpost].title + ' Description: ' + dataarr[indexofpost].body);
+            addcomments(indexofpost + 1);
+            click[indexofpost] = true;
+
+        } else {
+            $('#' + event.target.id).text('');
+            $('#' + event.target.id).text('Title: ' + dataarr[event.target.id].title);
+            click[event.target.id] = false;
+        }
+
+
+    });
+
+    /* Create a simple login form where users can input their email address and password (let's say their password is their zip code, which we can also find on the user objects) such that visitors can see all of their own posts and comments after they log in.
+    Create forms to allow users to create a new post or edit existing posts, pointing the forms to the appropriate RESTful endpoints using $.post() */
+
+    function login(){    
+    	var email = $("#email").val();
+    console.log(email);
+
+}
+
+
+
+    </script>
+</body>
+
+</html>

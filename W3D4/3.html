@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <button id="submit" onclick="get_pictures($('input').val())">Submit</button>
+<div id="output"></div>
+
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script>
+    var images = []
+    var get_pictures = function(searchTerm) {
+        $.ajax({
+            url: "https://api.imgur.com/3/gallery/search?q=" + encodeURI(searchTerm),
+            headers: {
+                "Authorization": "Client-ID e3776adbe9c5fb9"
+            },
+            success: function(response) {
+                console.log(response);
+                images = response;
+
+                $('#output').html('<img src="'+images.data[1].link+'" alt="">')
+            }
+        })
+        console.log(searchTerm);
+    }
+    </script>
+</body>
+
+</html>

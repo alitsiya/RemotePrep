@@ -1,0 +1,44 @@
+<!-- Exercise:
+
+Use a while loop and jQuery to append each item in your recipe and your bucket list onto a web page.
+Refactor your code such that the while loop lives inside a function called append_strings that takes an array as an input (argument)
+Invoke append_strings twice, passing in recipe the first time and bucket_list the second time
+Refactor append_strings such that it takes two arguments: an array of strings, and a string representing the CSS selector of the element into which the strings should be appended. (i.e. bucket_list may be appended into a #bucket_output div) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="output">Array1: </div>
+    <div id="output2">Array2: </div>
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script>
+    var bucket_list = [];
+    bucket_list[0] = "Be programmer";
+    bucket_list[1] = "Visit Alaska";
+    bucket_list.push("Be sucessful", "Plant a tree");
+    bucket_list.unshift("Goal one");
+    bucket_list.unshift("Goal two");
+    //var dying_wish = bucket_list.pop();
+    //var do_it_now = bucket_list.shift();
+    var recipe = [];
+    recipe[0] = "Open 24eat";
+    recipe[1] = "Order food";
+
+    var append_strings = function(arr, str) {
+        var i = 0;
+        while (i < arr.length) {
+            $(str).append(arr[i] + "<br>");
+            i++;
+        }
+    }
+    append_strings(bucket_list, '#output');
+    append_strings(recipe, '#output2');
+    </script>
+</body>
+
+</html>
